@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# TypeScript build output
+dist/
+
+# IDEs and editors
+/.idea
+*.swp
+*.swo
+*.tmp
+*~.nib
+
+# Environment Variables
+.env
+
+# Test coverage
+coverage/
+
+# System Files
+.DS_Store
+Thumbs.db

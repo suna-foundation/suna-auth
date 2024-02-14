@@ -1,18 +1,9 @@
 "use client";
 import axios from "axios";
 import {Auth} from "../../index";
-import {ErrorResult, JsonResult} from "../../functions/responces";
+import {ErrorResult, JsonResult, SignInConfig, SignInWithProviderResult} from "../../types";
 
-export interface SignInConfig {
-  redirect_url?: string
-  email?: string,
-  password?: string,
-  method?: string,
-}
-export type SignInWithProviderResult = Promise<false | JsonResult<{ url: string }> | ErrorResult>
-
-
-export async function signInWithProvider(provider: keyof typeof Auth.config, config?: SignInConfig): SignInWithProviderResult {
+export async function signIn(provider: keyof typeof Auth.config, config?: SignInConfig): SignInWithProviderResult {
   const { data: oauthUrlJson } = await axios.get<JsonResult<{url: string}> | ErrorResult>('/api/auth/signIn', {
     params: {
       provider: provider,

@@ -1,7 +1,8 @@
-"use client";
+import { signIn } from "./callbacks/signin";
+import { signOut } from "./callbacks/signout";
 
-import {signInWithProvider} from "./callbacks/signin";
-import {signOutAndReload} from "./callbacks/signout";
 
-export const signIn = signInWithProvider
-export const signOut = signOutAndReload
+export {
+  signIn,
+  signOut,
+}

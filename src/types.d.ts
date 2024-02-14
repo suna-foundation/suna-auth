@@ -1,28 +1,26 @@
 import {NextRequest} from "next/server";
 
-interface Provider {
+export interface Provider {
   handleCallback(request: NextRequest): Promise<Response>;
   handleSignIn(request: NextRequest, referer?: string): Promise<Response>;
   handleSignOut(request: NextRequest): Promise<void>;
   handleAuthCheck(token: string): Promise<{ user: UserType } | false>;
 }
 
-declare class Database {
-  public createAccount(data: AccountType): Promise<AccountType>;
-  public createUser(data: UserType): Promise<UserType>;
-  public createSession(data: SessionType): Promise<SessionType>;
-  public findAccount(data: Partial<AccountType>): Promise<AccountType | undefined>;
-  public findUser(data: Partial<UserType>): Promise<UserType | undefined>;
-
-  public findSession(data: Partial<SessionType>): Promise<SessionType | undefined>;
-  public purgeSessions(user: UserType) : Promise<boolean>;
+export interface Database {
+  createAccount(data: AccountType): Promise<AccountType>;
+  createUser(data: UserType): Promise<UserType>;
+  createSession(data: SessionType): Promise<SessionType>;
+  findAccount(data: Partial<AccountType>): Promise<AccountType | undefined>;
+  findUser(data: Partial<UserType>): Promise<UserType | undefined>;
+  findSession(data: Partial<SessionType>): Promise<SessionType | undefined>;
+  purgeSessions(user: UserType) : Promise<boolean>;
 }
 
-
-export declare class Cache {
-  public getValue(key: string): Promise<string | null>;
-  public setValue(key: string, value: string, options?: { expire: number; }): Promise<unknown>;
-  public deleteKey(key: string): Promise<number>;
+export interface Cache {
+  getValue(key: string): Promise<string | null>;
+  setValue(key: string, value: string, options?: { expire: number; }): Promise<unknown>;
+  deleteKey(key: string): Promise<number>;
 }
 
 export interface SingleConfig {
@@ -66,3 +64,19 @@ export interface UserType {
   provider: string;
   emailVerified: boolean;
 }
+
+export type ErrorResult = { success: false, message: string, status: number }
+export type ApiResult<T> = JsonResult<T> | ErrorResult
+export type JsonResult<T> = { success: true, data: T }
+
+export interface SignInConfig {
+  redirect_url?: string
+  email?: string,
+  password?: string,
+  method?: string,
+}
+export type SignInWithProviderResult = Promise<false | JsonResult<{ url: string }> | ErrorResult>
+
+
+
+

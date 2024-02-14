@@ -21,7 +21,6 @@ export const sendError = (status: number, message: string) => {
     statusText: message,
   })
 };
-export type ErrorResult = { success: false, message: string, status: number }
 
 
 /**
@@ -41,7 +40,6 @@ export const sendJson = (data: any, code?: number) => {
   );
 };
 
-export type JsonResult<T> = { success: true, data: T }
 
 
 /**
@@ -56,5 +54,3 @@ export const sendErrorRedirect = (
 ) => {
   return Response.redirect(`${process.env.NEXTAUTH_URL}/api/auth/error?message=${message}&code=${status}`, 302,);
 };
-
-export type ApiResult<T> = JsonResult<T> | ErrorResult

@@ -1,9 +1,6 @@
 "use client";
 
-
-export type SignOutAndReloadResult = Promise<void>
-
-export async function signOutAndReload() {
+export async function signOut() {
   await fetch(`/api/auth/signOut`);
 
   if (typeof window !== "undefined") {

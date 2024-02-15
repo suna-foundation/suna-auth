@@ -1,21 +1,27 @@
 {
   "name": "suna-auth",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An easy authentication library",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src/types.d.ts"
   ],
   "exports": {
+    "./types": {
+      "types": "./src/types.d.ts"
+    },
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
     },
     "./client": {
       "require": "./dist/client/index.js",
-      "import": "./dist/client/index.mjs"
+      "import": "./dist/client/index.mjs",
+      "types": "./dist/client/index.d.ts"
     }
   },
   "scripts": {
@@ -26,7 +32,7 @@
     "authentication",
     "auth",
     "library",
-    "ez-auth"
+    "suna-auth"
   ],
   "author": "Chance",
   "license": "ISC",

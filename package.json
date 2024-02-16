@@ -1,29 +1,33 @@
 {
   "name": "suna-auth",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An easy authentication library",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "src/types.d.ts"
-  ],
   "exports": {
-    "./types": {
-      "types": "./src/types.d.ts"
-    },
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./client": {
       "require": "./dist/client/index.js",
-      "import": "./dist/client/index.mjs",
-      "types": "./dist/client/index.d.ts"
+      "import": "./dist/client/index.js",
+      "types": "./src/client/index.ts"
+    },
+    "./types": {
+      "require": "./dist/types/index.js",
+      "import": "./dist/types/index.mjs",
+      "types": "./src/types/index.ts"
     }
   },
+  "files": [
+    "dist",
+    "dist/client",
+    "dist/types",
+    "src/client",
+    "src/types"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1"

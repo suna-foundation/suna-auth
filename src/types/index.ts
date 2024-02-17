@@ -33,7 +33,10 @@ export interface Config {
   [key: string]: SingleConfig
 }
 
-export type Secret = string
+export type Secret = {
+  secret: string;
+  algorithm: string;
+}
 
 export interface Session {
   user: UserType;

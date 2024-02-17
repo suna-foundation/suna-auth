@@ -2,8 +2,11 @@
   "compilerOptions": {
     "outDir": "./dist",
     "target": "es6",
+    "baseUrl": ".",
     "module": "commonjs",
+    "moduleResolution": "node",
     "declaration": true,
+    "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

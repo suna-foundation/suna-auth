@@ -1,40 +1,55 @@
-import {importPKCS8, jwtVerify, type JWTVerifyResult, KeyLike, SignJWT} from "jose";
-import {nanoid} from "nanoid";
-import { Buffer } from 'buffer';
-import {Auth} from "../index";
+import {
+  importPKCS8,
+  jwtVerify,
+  type JWTVerifyResult,
+  KeyLike,
+  SignJWT,
+} from "jose";
+import { nanoid } from "nanoid";
+import { Buffer } from "buffer";
+import { Auth } from "../index";
 
 export interface CreatTokenPayload {
-  provider: string,
-  email: string,
-  sub: string,
+  provider: string;
+  email: string;
+  sub: string;
 
-  [key: string]: string
+  [key: string]: string;
 }
-
 
 let privateKey: KeyLike | Uint8Array;
-export const getPrivateKey = async () => {
-  return privateKey = privateKey || await importPKCS8(Buffer.from(Auth.secret.secret, 'base64').toString('utf-8'), Auth.secret.algorithm)
-}
+export const getPrivateKey = async (): Promise<KeyLike | Uint8Array> => {
+  return (privateKey =
+    privateKey ||
+    (await importPKCS8(
+      Buffer.from(Auth.secret.secret, "base64").toString("utf-8"),
+      Auth.secret.algorithm,
+    )));
+};
 
-export const createToken = async (data: CreatTokenPayload, expiration: Date) => {
-  const privateKey = await getPrivateKey()
+export const createToken = async (
+  data: CreatTokenPayload,
+  expiration: Date,
+): Promise<string> => {
+  const privateKey = await getPrivateKey();
   return await new SignJWT({
-    ...data
+    ...data,
   })
-    .setProtectedHeader({alg: Auth.secret.algorithm,})
+    .setProtectedHeader({ alg: Auth.secret.algorithm })
     .setJti(nanoid())
     .setIssuedAt()
     .setExpirationTime(expiration)
-    .sign(privateKey)
-}
+    .sign(privateKey);
+};
 
-export const decodeToken = async <T = CreatTokenPayload>(sessionTokenString: string): Promise<JWTVerifyResult<T> | false> => {
+export const decodeToken = async <T = CreatTokenPayload>(
+  sessionTokenString: string,
+): Promise<JWTVerifyResult<T> | false> => {
   try {
-    const privateKey = await getPrivateKey()
-    return await jwtVerify<T>(sessionTokenString, privateKey)
+    const privateKey = await getPrivateKey();
+    return await jwtVerify<T>(sessionTokenString, privateKey);
   } catch (e) {
-    console.log(e)
-    return false
+    console.log(e);
+    return false;
   }
-}
+};

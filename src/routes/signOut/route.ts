@@ -1,5 +1,4 @@
-import { cookies } from "next/headers";
-import { NextRequest } from "next/server";
+import { cookies } from "npm:next/headers";
 
 export async function GET() {
   const cookieHandler = cookies();

@@ -1,10 +1,10 @@
-export async function GET(request: { nextUrl: { searchParams: any; }; }) {
-  console.log("signing in")
+export async function GET(request: { nextUrl: { searchParams: any } }) {
   const searchParams = request.nextUrl.searchParams;
-  const message = searchParams.get("message")
-  const code = searchParams.get('code')
+  const message = searchParams.get("message");
+  const code = searchParams.get("code");
 
-  return new Response(`<!DOCTYPE html>
+  return new Response(
+    `<!DOCTYPE html>
 <html>
 <head>
     <style>
@@ -21,7 +21,9 @@ export async function GET(request: { nextUrl: { searchParams: any; }; }) {
     <h1>Code: </h1>
     <p id="code">${code}</p>
 </body>
-</html>`,{
-    headers: { 'Content-Type': 'text/html' },
-  })
+</html>`,
+    {
+      headers: { "Content-Type": "text/html" },
+    },
+  );
 }

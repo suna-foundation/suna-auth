@@ -3,7 +3,7 @@ import "server-only";
 import { Session } from "../types";
 import { Auth } from "../index";
 import { decodeToken } from "./jwt";
-import {cookies} from "npm:next/headers";
+import {cookies} from "next/headers";
 
 export async function sessionsInternal(): Promise<false | Session> {
   const cookie = cookies();

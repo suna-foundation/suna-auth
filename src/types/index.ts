@@ -1,4 +1,4 @@
-import { NextRequest } from "npm:next/server";
+import { NextRequest } from "next/server";
 
 export interface Provider {
   handleCallback(request: NextRequest): Promise<Response>;

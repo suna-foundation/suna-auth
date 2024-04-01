@@ -4,8 +4,8 @@ import {
   type JWTVerifyResult,
   KeyLike,
   SignJWT,
-} from "npm:jose";
-import { nanoid } from "@jlarky/nanoid";
+} from "jose";
+import { nanoid } from "nanoid";
 import { Buffer } from "buffer";
 import { Auth } from "../index";
 

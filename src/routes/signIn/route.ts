@@ -1,4 +1,4 @@
-import { NextRequest } from "npm:next/server";
+import { NextRequest } from "next/server";
 import { sendError } from "../../functions/responces";
 import { Auth } from "../../index";
 

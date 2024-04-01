@@ -1,4 +1,4 @@
-import { NextRequest } from "npm:next/server";
+import { NextRequest } from "next/server";
 import { Auth } from "../../../index";
 import { SingleConfig } from "../../../types";
 import { sendErrorRedirect } from "../../../functions/responces";

@@ -3,10 +3,10 @@ import { GET as signIn } from "./signIn/route";
 import { GET as signOut } from "./signOut/route";
 import { GET as message } from "./message/route";
 import { GET as error } from "./error/route";
-import { createEdgeRouter } from "npm:next-connect";
-import { NextRequest } from "npm:next/server";
+import { createEdgeRouter } from "next-connect";
+import { NextRequest } from "next/server";
 
-interface RequestContext {
+export interface RequestContext {
   params: {
     [key: string]: string[];
   };

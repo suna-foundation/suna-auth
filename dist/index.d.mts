@@ -1,4 +1,4 @@
-import { Session, Config, Secret, AccountType, UserType, SessionType } from './types/index.cjs';
+import { Session, Config, Secret, AccountType, UserType, SessionType } from './types/index.mjs';
 import { NextRequest } from 'next/server';
 import { JWTVerifyResult } from 'jose';
 

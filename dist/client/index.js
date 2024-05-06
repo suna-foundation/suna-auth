@@ -1,19 +1,19 @@
-"use client";
-import {
-  __async,
-  __spreadValues
-} from "../chunk-Z6VI3XPA.js";
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }"use client";
+
+
+
+var _chunk6WM3INZTjs = require('../chunk-6WM3INZT.js');
 
 // src/client/index.ts
-import axios from "axios";
+var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 function signIn(provider, config) {
-  return __async(this, null, function* () {
+  return _chunk6WM3INZTjs.__async.call(void 0, this, null, function* () {
     var _a;
-    const { data: oauthUrlJson } = yield axios.get("/api/auth/signIn", {
+    const { data: oauthUrlJson } = yield _axios2.default.get("/api/auth/signIn", {
       params: {
         provider
       },
-      headers: __spreadValues({}, config),
+      headers: _chunk6WM3INZTjs.__spreadValues.call(void 0, {}, config),
       validateStatus: () => true
     });
     if (typeof window == "undefined")
@@ -29,7 +29,7 @@ function signIn(provider, config) {
   });
 }
 function signOut() {
-  return __async(this, null, function* () {
+  return _chunk6WM3INZTjs.__async.call(void 0, this, null, function* () {
     yield fetch(`/api/auth/signOut`);
     if (typeof window !== "undefined") {
       window.location.reload();
@@ -38,7 +38,8 @@ function signOut() {
     }
   });
 }
-export {
-  signIn,
-  signOut
-};
+
+
+
+exports.signIn = signIn; exports.signOut = signOut;
+//# sourceMappingURL=index.js.map

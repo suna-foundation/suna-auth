@@ -1,35 +1,35 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});
-
-
-var _chunkD3E2KNWRcjs = require('./chunk-D3E2KNWR.cjs');
+import {
+  __async,
+  __spreadValues
+} from "./chunk-XEFTB2OF.mjs";
 
 // src/functions/auth.ts
-require('server-only');
-var _headers = require('next/headers');
+import "server-only";
+import { cookies } from "next/headers";
 
 // src/functions/jwt.ts
-
-
-
-
-var _jose = require('jose');
-var _nanoid = require('nanoid');
-var _buffer = require('buffer');
+import {
+  importPKCS8,
+  jwtVerify,
+  SignJWT
+} from "jose";
+import { nanoid } from "nanoid";
+import { Buffer } from "buffer";
 var privateKey;
-var getPrivateKey = () => _chunkD3E2KNWRcjs.__async.call(void 0, void 0, null, function* () {
-  return privateKey = privateKey || (yield _jose.importPKCS8.call(void 0, 
-    _buffer.Buffer.from(Auth.secret.secret, "base64").toString("utf-8"),
+var getPrivateKey = () => __async(void 0, null, function* () {
+  return privateKey = privateKey || (yield importPKCS8(
+    Buffer.from(Auth.secret.secret, "base64").toString("utf-8"),
     Auth.secret.algorithm
   ));
 });
-var createToken = (data, expiration) => _chunkD3E2KNWRcjs.__async.call(void 0, void 0, null, function* () {
+var createToken = (data, expiration) => __async(void 0, null, function* () {
   const privateKey2 = yield getPrivateKey();
-  return yield new (0, _jose.SignJWT)(_chunkD3E2KNWRcjs.__spreadValues.call(void 0, {}, data)).setProtectedHeader({ alg: Auth.secret.algorithm }).setJti(_nanoid.nanoid.call(void 0, )).setIssuedAt().setExpirationTime(expiration).sign(privateKey2);
+  return yield new SignJWT(__spreadValues({}, data)).setProtectedHeader({ alg: Auth.secret.algorithm }).setJti(nanoid()).setIssuedAt().setExpirationTime(expiration).sign(privateKey2);
 });
-var decodeToken = (sessionTokenString) => _chunkD3E2KNWRcjs.__async.call(void 0, void 0, null, function* () {
+var decodeToken = (sessionTokenString) => __async(void 0, null, function* () {
   try {
     const privateKey2 = yield getPrivateKey();
-    return yield _jose.jwtVerify.call(void 0, sessionTokenString, privateKey2);
+    return yield jwtVerify(sessionTokenString, privateKey2);
   } catch (e) {
     console.log(e);
     return false;
@@ -38,9 +38,9 @@ var decodeToken = (sessionTokenString) => _chunkD3E2KNWRcjs.__async.call(void 0,
 
 // src/functions/auth.ts
 function sessionsInternal() {
-  return _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
+  return __async(this, null, function* () {
     var _a;
-    const cookie = _headers.cookies.call(void 0, );
+    const cookie = cookies();
     const sessionTokenString = (_a = cookie.get("SessionToken")) == null ? void 0 : _a.value;
     if (!sessionTokenString)
       return false;
@@ -94,7 +94,7 @@ var sendErrorRedirect = (status, message) => {
 
 // src/routes/callback/[id]/route.ts
 function GET(_0, _1) {
-  return _chunkD3E2KNWRcjs.__async.call(void 0, this, arguments, function* (request, {
+  return __async(this, arguments, function* (request, {
     params
   }) {
     const key = Object.keys(params)[0];
@@ -107,7 +107,7 @@ function GET(_0, _1) {
 
 // src/routes/signIn/route.ts
 function GET2(request) {
-  return _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
+  return __async(this, null, function* () {
     const searchParams = request.nextUrl.searchParams;
     const provider = searchParams.get("provider");
     const referer = request.headers.get("redirect_url") || request.headers.get("referer") || "/";
@@ -121,10 +121,10 @@ function GET2(request) {
 }
 
 // src/routes/signOut/route.ts
-
+import { cookies as cookies2 } from "next/headers";
 function GET3() {
-  return _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
-    const cookieHandler = _headers.cookies.call(void 0, );
+  return __async(this, null, function* () {
+    const cookieHandler = cookies2();
     cookieHandler.delete("SessionToken");
     return new Response();
   });
@@ -132,7 +132,7 @@ function GET3() {
 
 // src/routes/message/route.ts
 function GET4(request) {
-  return _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
+  return __async(this, null, function* () {
     const searchParams = request.nextUrl.searchParams;
     const message = searchParams.get("message");
     const code = searchParams.get("code");
@@ -164,7 +164,7 @@ function GET4(request) {
 
 // src/routes/error/route.ts
 function GET5(request) {
-  return _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
+  return __async(this, null, function* () {
     const searchParams = request.nextUrl.searchParams;
     const message = searchParams.get("message");
     const code = searchParams.get("code");
@@ -195,15 +195,15 @@ function GET5(request) {
 }
 
 // src/routes/route.ts
-var _nextconnect = require('next-connect');
-var handler = _nextconnect.createEdgeRouter.call(void 0, );
+import { createEdgeRouter } from "next-connect";
+var handler = createEdgeRouter();
 handler.get("/api/auth/callback/:id", GET);
 handler.get("/api/auth/signOut", GET3);
 handler.get("/api/auth/signIn", GET2);
 handler.get("/api/auth/message", GET4);
 handler.get("/api/auth/error", GET5);
 function GET6(request, ctx) {
-  return _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
+  return __async(this, null, function* () {
     return handler.run(request, ctx);
   });
 }
@@ -211,10 +211,10 @@ function GET6(request, ctx) {
 // src/index.ts
 var Auth = class _Auth {
   constructor(config, secret, callbacks = {
-    handleAuthCheck: (session) => _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
+    handleAuthCheck: (session) => __async(this, null, function* () {
       return session;
     }),
-    handleCreate: (account, user, session) => _chunkD3E2KNWRcjs.__async.call(void 0, this, null, function* () {
+    handleCreate: (account, user, session) => __async(this, null, function* () {
       return void 0;
     })
   }) {
@@ -225,11 +225,12 @@ var Auth = class _Auth {
     this.auth = sessionsInternal;
   }
 };
-
-
-
-
-
-
-
-exports.Auth = Auth; exports.createToken = createToken; exports.decodeToken = decodeToken; exports.sendError = sendError; exports.sendErrorRedirect = sendErrorRedirect; exports.sendJson = sendJson;
+export {
+  Auth,
+  createToken,
+  decodeToken,
+  sendError,
+  sendErrorRedirect,
+  sendJson
+};
+//# sourceMappingURL=index.mjs.map

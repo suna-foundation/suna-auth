@@ -1,12 +1,11 @@
 {
   "name": "suna-auth",
-  "version": "1.0.6",
-  "description": "An easy authentication library",
+  "version": "1.0.8",
+  "description": "A Nextjs library to provide auth for sites. Supports various login methods",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "files": [
-    "dist/**"
+    "dist"
   ],
   "scripts": {
     "build": "tsup",
@@ -19,6 +18,17 @@
     "suna-auth"
   ],
   "author": "Chance",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hot-hot-Solutions/suna-auth.git"
+  },
+  "authors": [
+    "https://github.com/Gratenes"
+  ],
+  "bugs": {
+    "url": "https://github.com/hot-hot-Solutions/suna-auth/issues"
+  },
+  "homepage": "https://github.com/hot-hot-Solutions/suna-auth#readme",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.11.17",

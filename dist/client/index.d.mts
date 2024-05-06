@@ -1,5 +1,5 @@
-import { Auth } from '../index.cjs';
-import { SignInConfig, JsonResult, ErrorResult } from '../types/index.cjs';
+import { Auth } from '../index.mjs';
+import { SignInConfig, JsonResult, ErrorResult } from '../types/index.mjs';
 import 'next/server';
 import 'jose';
 

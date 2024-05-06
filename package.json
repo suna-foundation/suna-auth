@@ -2,25 +2,9 @@
   "name": "suna-auth",
   "version": "1.0.6",
   "description": "An easy authentication library",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./client": {
-      "import": "./dist/client/index.js",
-      "require": "./dist/client/index.js",
-      "types": "./src/client/index.ts"
-    },
-    "./types": {
-      "import": "./dist/types/index.mjs",
-      "require": "./dist/types/index.js",
-      "types": "./src/types/index.ts"
-    }
-  },
   "files": [
     "dist"
   ],

@@ -1,9 +1,9 @@
 import "server-only";
 
+import { cookies } from "next/headers";
 import { Session } from "../types";
 import { Auth } from "../index";
 import { decodeToken } from "./jwt";
-import {cookies} from "next/headers";
 
 export async function sessionsInternal(): Promise<false | Session> {
   const cookie = cookies();

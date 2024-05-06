@@ -6,7 +6,7 @@ import { GET as error } from "./error/route";
 import { createEdgeRouter } from "next-connect";
 import { NextRequest } from "next/server";
 
-export interface RequestContext {
+interface RequestContext {
   params: {
     [key: string]: string[];
   };

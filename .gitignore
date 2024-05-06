@@ -1,11 +1,7 @@
 # Node modules
 node_modules/
 **/node_modules/
-**/dist/
 **/package-lock.json
-
-# TypeScript build output
-dist/
 
 # IDEs and editors
 /.idea

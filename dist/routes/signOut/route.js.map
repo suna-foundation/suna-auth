@@ -1,0 +1,1 @@
+{"version":3,"file":"route.js","sourceRoot":"","sources":["../../../src/routes/signOut/route.ts"],"names":[],"mappings":";;;AAAA,0CAAuC;AAEhC,KAAK,UAAU,GAAG;IACvB,MAAM,aAAa,GAAG,IAAA,iBAAO,GAAE,CAAC;IAChC,aAAa,CAAC,MAAM,CAAC,cAAc,CAAC,CAAC;IAErC,OAAO,IAAI,QAAQ,EAAE,CAAC;AACxB,CAAC;AALD,kBAKC"}

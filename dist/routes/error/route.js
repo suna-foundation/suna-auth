@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.GET = void 0;
-async function GET(request) {
+export async function GET(request) {
     const searchParams = request.nextUrl.searchParams;
     const message = searchParams.get("message");
     const code = searchParams.get("code");
@@ -26,5 +23,4 @@ async function GET(request) {
         headers: { "Content-Type": "text/html" },
     });
 }
-exports.GET = GET;
 //# sourceMappingURL=route.js.map

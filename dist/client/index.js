@@ -1,13 +1,8 @@
 "use client";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.signOut = exports.signIn = void 0;
-const axios_1 = __importDefault(require("axios"));
-async function signIn(provider, config) {
+import axios from "axios";
+export async function signIn(provider, config) {
     var _a;
-    const { data: oauthUrlJson } = await axios_1.default.get("/api/auth/signIn", {
+    const { data: oauthUrlJson } = await axios.get("/api/auth/signIn", {
         params: {
             provider: provider,
         },
@@ -28,8 +23,7 @@ async function signIn(provider, config) {
         return oauthUrlJson;
     }
 }
-exports.signIn = signIn;
-async function signOut() {
+export async function signOut() {
     await fetch(`/api/auth/signOut`);
     if (typeof window !== "undefined") {
         window.location.reload();
@@ -38,5 +32,4 @@ async function signOut() {
         throw new Error("This function can only be used on the client-side.");
     }
 }
-exports.signOut = signOut;
 //# sourceMappingURL=index.js.map

@@ -1,6 +1,6 @@
 {
   "name": "suna-auth",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A Nextjs library to provide auth for sites. Supports various login methods",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

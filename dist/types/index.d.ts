@@ -18,6 +18,7 @@ export interface Database {
 }
 export interface Cache {
     getValue(key: string): Promise<string | null>;
+    getValues(key: string): Promise<string[]>;
     setValue(key: string, value: string, options?: {
         expire: number;
     }): Promise<unknown>;

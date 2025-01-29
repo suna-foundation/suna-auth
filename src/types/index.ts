@@ -93,6 +93,7 @@ export interface SignInConfig {
   email?: string;
   password?: string;
   method?: string;
+  [key: string]: string | undefined;
 }
 
 export type SignInWithProviderResult = Promise<

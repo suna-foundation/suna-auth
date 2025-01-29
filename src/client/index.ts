@@ -14,9 +14,7 @@ export async function signIn(
     params: {
       provider: provider,
     },
-    headers: {
-      ...config,
-    },
+    headers: config as any,
     validateStatus: () => true,
   });
 

@@ -6,7 +6,7 @@ export async function signIn(provider, config) {
         params: {
             provider: provider,
         },
-        headers: Object.assign({}, config),
+        headers: config,
         validateStatus: () => true,
     });
     if (typeof window == "undefined")

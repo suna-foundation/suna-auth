@@ -1,9 +1,10 @@
-import { NextRequest } from "next/server";
+import { IWebRequest } from "../adaptor/types";
+export * from "../adaptor/types";
 export interface Provider {
-    handleCallback(request: NextRequest): Promise<Response>;
-    handleSignIn(request: NextRequest, referer?: string): Promise<Response>;
-    handleSignOut(request: NextRequest): Promise<void>;
-    handleAuthCheck(token: string): Promise<{
+    handleCallback(request: IWebRequest): Promise<Response>;
+    handleSignIn(request: IWebRequest, referer?: string): Promise<Response>;
+    handleSignOut(request: IWebRequest): Promise<void>;
+    handleAuthCheck(request: IWebRequest, token: string): Promise<{
         user: UserType;
     } | false>;
 }
@@ -53,7 +54,6 @@ export interface SessionType {
     provider: string;
     accountId: string;
     expiresAt: Date;
-    metadata?: string;
 }
 export interface UserType {
     name: string;

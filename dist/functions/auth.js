@@ -1,10 +1,9 @@
 import "server-only";
-import { cookies } from "next/headers";
 import { Auth } from "../index";
 import { decodeToken } from "./jwt";
-export async function sessionsInternal() {
+export async function sessionsInternal(request) {
     var _a;
-    const cookie = cookies();
+    const cookie = request.cookies;
     const sessionTokenString = (_a = cookie.get("SessionToken")) === null || _a === void 0 ? void 0 : _a.value;
     if (!sessionTokenString)
         return false;
@@ -20,7 +19,7 @@ export async function sessionsInternal() {
           const cachedAccountString = await currentProvider.cache.getValue(Session)
           if (cachedAccountString) cacheAccount = JSON.parse(cachedAccountString)
         }*/
-        const userSession = await currentProvider.provider.handleAuthCheck(sessionTokenString);
+        const userSession = await currentProvider.provider.handleAuthCheck(request, sessionTokenString);
         if (!userSession)
             return false;
         return await Auth.callbacks.handleAuthCheck(userSession);

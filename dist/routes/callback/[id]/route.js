@@ -1,6 +1,7 @@
 import { Auth } from "../../../index";
 import { sendErrorRedirect } from "../../../functions/responces";
-export async function GET(request, { params, }) {
+export async function GET(request) {
+    const params = request.params.getAll();
     const key = Object.keys(params)[0];
     if (!params[key].at(-1))
         return sendErrorRedirect(500, "this provider is not implemented");

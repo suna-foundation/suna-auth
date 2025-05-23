@@ -1,5 +1,2 @@
-export declare function GET(request: {
-    nextUrl: {
-        searchParams: any;
-    };
-}): Promise<Response>;
+import { IWebRequest } from "../../adaptor/types";
+export declare function GET(request: IWebRequest): Promise<Response>;

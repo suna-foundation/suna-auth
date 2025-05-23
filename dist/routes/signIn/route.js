@@ -1,8 +1,8 @@
 import { sendError } from "../../functions/responces";
 import { Auth } from "../../index";
 export async function GET(request) {
-    const searchParams = request.nextUrl.searchParams;
-    const provider = searchParams.get("provider");
+    const searchQuery = request.query;
+    const provider = searchQuery.get("provider");
     const referer = request.headers.get("redirect_url") ||
         request.headers.get("referer") ||
         "/";

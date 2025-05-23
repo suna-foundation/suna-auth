@@ -1,6 +1,5 @@
-import { cookies } from "next/headers";
-export async function GET() {
-    const cookieHandler = cookies();
+export async function GET(request) {
+    const cookieHandler = request.cookies;
     cookieHandler.delete("SessionToken");
     return new Response();
 }

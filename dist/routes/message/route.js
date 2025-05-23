@@ -1,7 +1,7 @@
 export async function GET(request) {
-    const searchParams = request.nextUrl.searchParams;
-    const message = searchParams.get("message");
-    const code = searchParams.get("code");
+    const searchQuery = request.query;
+    const message = searchQuery.get("message");
+    const code = searchQuery.get("code");
     return new Response(`<!DOCTYPE html>
 <html>
 <head>

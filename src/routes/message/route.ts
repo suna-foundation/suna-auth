@@ -1,7 +1,9 @@
-export async function GET(request: { nextUrl: { searchParams: any } }) {
-  const searchParams = request.nextUrl.searchParams;
-  const message = searchParams.get("message");
-  const code = searchParams.get("code");
+import { IWebRequest } from "../../adaptor/types";
+
+export async function GET(request: IWebRequest) {
+  const searchQuery = request.query
+  const message = searchQuery.get("message");
+  const code = searchQuery.get("code");
 
   return new Response(
     `<!DOCTYPE html>

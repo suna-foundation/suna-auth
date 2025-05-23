@@ -1,3 +1,4 @@
 import "server-only";
 import { Session } from "../types";
-export declare function sessionsInternal(): Promise<false | Session>;
+import { IWebRequest } from "../adaptor/types";
+export declare function sessionsInternal(request: IWebRequest): Promise<false | Session>;

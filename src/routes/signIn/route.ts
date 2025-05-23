@@ -1,10 +1,10 @@
-import { NextRequest } from "next/server";
+import { IWebRequest } from "../../adaptor/types";
 import { sendError } from "../../functions/responces";
 import { Auth } from "../../index";
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const provider = searchParams.get("provider") as
+export async function GET(request: IWebRequest) {
+  const searchQuery = request.query
+  const provider = searchQuery.get("provider") as
     | keyof typeof Auth.config
     | null;
   const referer =

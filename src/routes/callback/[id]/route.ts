@@ -1,18 +1,13 @@
-import { NextRequest } from "next/server";
 import { Auth } from "../../../index";
 import { SingleConfig } from "../../../types";
 import { sendErrorRedirect } from "../../../functions/responces";
+import { IWebRequest } from "../../../adaptor/types";
 
 export async function GET(
-  request: NextRequest,
-  {
-    params,
-  }: {
-    params: {
-      [key: string]: string[];
-    };
-  },
+  request: IWebRequest
+
 ) {
+  const params = request.params.getAll()
   const key = Object.keys(params)[0];
   if (!params[key].at(-1))
     return sendErrorRedirect(500, "this provider is not implemented");

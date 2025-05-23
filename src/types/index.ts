@@ -1,13 +1,15 @@
-import { NextRequest } from "next/server";
+import { IWebRequest } from "../adaptor/types";
+
+export * from "../adaptor/types"
 
 export interface Provider {
-  handleCallback(request: NextRequest): Promise<Response>;
+  handleCallback(request: IWebRequest): Promise<Response>;
 
-  handleSignIn(request: NextRequest, referer?: string): Promise<Response>;
+  handleSignIn(request: IWebRequest, referer?: string): Promise<Response>;
 
-  handleSignOut(request: NextRequest): Promise<void>;
+  handleSignOut(request: IWebRequest): Promise<void>;
 
-  handleAuthCheck(token: string): Promise<{ user: UserType } | false>;
+  handleAuthCheck(request: IWebRequest, token: string): Promise<{ user: UserType } | false>;
 }
 
 export interface Database {

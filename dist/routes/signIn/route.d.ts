@@ -1,2 +1,2 @@
-import { NextRequest } from "next/server";
-export declare function GET(request: NextRequest): Promise<Response>;
+import { IWebRequest } from "../../adaptor/types";
+export declare function GET(request: IWebRequest): Promise<Response>;

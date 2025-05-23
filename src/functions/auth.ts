@@ -1,12 +1,12 @@
 import "server-only";
 
-import { cookies } from "next/headers";
 import { Session } from "../types";
 import { Auth } from "../index";
 import { decodeToken } from "./jwt";
+import { IWebRequest } from "../adaptor/types";
 
-export async function sessionsInternal(): Promise<false | Session> {
-  const cookie = cookies();
+export async function sessionsInternal(request: IWebRequest): Promise<false | Session> {
+  const cookie = request.cookies
   const sessionTokenString = cookie.get("SessionToken")?.value;
 
   if (!sessionTokenString) return false;
@@ -30,7 +30,7 @@ export async function sessionsInternal(): Promise<false | Session> {
     }*/
 
     const userSession =
-      await currentProvider.provider.handleAuthCheck(sessionTokenString);
+      await currentProvider.provider.handleAuthCheck(request, sessionTokenString);
 
     if (!userSession) return false;
     return await Auth.callbacks.handleAuthCheck(userSession);

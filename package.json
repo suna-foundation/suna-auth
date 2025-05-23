@@ -1,6 +1,6 @@
 {
   "name": "suna-auth",
-  "version": "1.0.13",
+  "version": "2.0.0",
   "description": "A Nextjs library to provide auth for sites. Supports various login methods",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,21 +34,11 @@
   "dependencies": {
     "@types/node": "^20.11.17",
     "axios": "^1.6.7",
-    "bcrypt": "^5.1.1",
     "buffer": "^6.0.3",
-    "express": "^4.18.2",
     "jose": "^5.2.2",
     "nanoid": "^5.0.7",
-    "next": "^14.1.0",
-    "next-connect": "^1.0.0",
     "node": "^21.6.1",
-    "react": "^18.2.0",
-    "rimraf": "^5.0.5",
-    "server-only": "^0.0.1",
-    "typescript": "^5.3.3"
+    "rimraf": "^5.0.5"
   },
-  "devDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/react": "^18.2.55"
-  }
+  "devDependencies": {}
 }
